@@ -51,7 +51,7 @@ module ActionView
       #   country_select(@object, :region, ['US', 'CA'], class: region)
       #
       # Returns an `html_safe` string containing the HTML for a select element.
-      def country_select(object, method, priorities_or_options = {}, options_or_html_options = {}, html_options = {})
+      def country_select_helper(object, method, priorities_or_options = {}, options_or_html_options = {}, html_options = {})
         if priorities_or_options.is_a? Array
           options = options_or_html_options
           options[:priority] = priorities_or_options
@@ -237,7 +237,7 @@ module ActionView
           html_options = options_or_html_options
         end
 
-        @template.country_select(@object_name, method, objectify_options(options), @default_options.merge(html_options))
+        @template.country_select_helper(@object_name, method, objectify_options(options), @default_options.merge(html_options))
       end
 
       # Generate select and subregion option tags with the provided name. A
